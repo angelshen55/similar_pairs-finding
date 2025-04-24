@@ -15,8 +15,11 @@ The primary contribution of this work is a practical, scalable framework for tex
 
 **3.1 MinHash**
 Prior work in MinHash and document deduplication includes:
+
 • Original MinHash (Broder, 1997): Introduced the core technique for estimating Jaccard similarity using minimum hash values, providing the theoretical foundation for our implementation.
+
 • LSH Variants (Gionis et al., 1999): Extended MinHash with Locality-Sensitive Hashing (LSH) bands, significantly improving scalability by reducing the number of required comparisons.
+
 • Recent Optimizations: ”MinHash virtually always outperforms SimHash when the data are binary” are provided with a theoretical answer validated by experiments (Li., Shrivastava, 2014)as a helpful tool in deciding which LSH to use.
 
 **3.2 SimHash**
@@ -24,8 +27,12 @@ As early as 2002, researchers began exploring various similarity functions for L
 of novel methodologies, such as employing Hamming distance calculations, to efficiently identify differences between documents. The detailed algorithms presented by Google for both online and batch queries highlight the increasing maturity of simhash applications. Nevertheless, areas for further refinement remain. Research conducted by Caitlin and Greg suggests that for realistic datasets, using fewer tags during key computation can enhance performance, and that the 0x00 pattern is a critical factor influencing efficiency. These findings offer potential avenues for improvement and innovation in the design of our LSH scheme.
 
 **3.3 Bit Sampling**
+
 3.3.1 Theoretical Foundations and Early Explorations
+
 The core idea of Bit Sampling originates from studies on adapting Locality-Sensitive Hashing (LSH) to the Hamming distance. Charikar (2002) first proposed using random hyperplane–based hash functions to map high-dimensional vectors into binary signatures, and proved that these hash functions satisfy the locality-sensitive property: when two vectors have a small Hamming distance, the probability that their hash values coincide increases significantly. This theoretical result laid the mathematical foundation for the subsequent design of Bit Sampling algorithms. Early applications focused primarily on text similarity detection—for example, by computing the Hamming distance between document signatures to quickly identify duplicate web pages.
+
 3.3.2 Algorithmic Optimizations and Cross-Domain Extensions
+
 Recent research has progressed along two main directions: precision enhancement and computational efficiency. For high-dimensional dense datasets, hybrid architectures have been proposed, such as combining Bit Sampling with p-stable distribution LSH to support Euclidean distance metrics. Moreover,
 neural network–driven approaches (e.g., LLSH) replace traditional hash functions with multi-layer perceptrons, achieving up to 15% higher accuracy in image retrieval tasks compared to conventional Bit Sampling, at the expense of added hardware dependencies due to GPU acceleration.
